@@ -16,7 +16,7 @@ class BasePage:
     @allure.step('Клик по элементу')
     def click_on_element(self, locator, timeout=5):
         WebDriverWait(self.driver, timeout).until(expected_conditions.visibility_of_element_located(locator))
-        return self.driver.find_element(*locator).click()
+        return self.find_element(locator).click()
 
     @allure.step('Скролл до элемента')
     def scroll_to_element(self, locator, timeout=5):
@@ -26,7 +26,7 @@ class BasePage:
     @allure.step('Получение текст элемента')
     def get_text_element(self, locator, timeout=5):
         WebDriverWait(self.driver, timeout).until(expected_conditions.visibility_of_element_located(locator))
-        return self.driver.find_element(*locator).text
+        return self.find_element(locator).text
 
     # Форматирование локатора
     @staticmethod
@@ -36,7 +36,7 @@ class BasePage:
 
     @allure.step('Заполнение поля')
     def fill_field(self, locator, text):
-        return self.driver.find_element(*locator).send_keys(text)
+        return self.find_element(locator).send_keys(text)
 
     @allure.step('Переход на открывшуюся страницу')
     def switch_new_page(self):

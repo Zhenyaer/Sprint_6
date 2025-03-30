@@ -1,6 +1,6 @@
-import time
 import allure
 from locators.order_page_locators import LocatorsOrderPage
+from locators.dzen_page_locators import LocatorsDzenPage
 from pages.base_page import BasePage
 
 
@@ -14,9 +14,9 @@ class OrderPage(BasePage):
         return self.click_on_element(LocatorsOrderPage.yandex_logo)
 
     @allure.step('Переход на новую страницу')
-    def switch_and_load_dzen(self, timeout=3):
+    def switch_and_load_dzen(self):
         self.switch_new_page()
-        time.sleep(timeout)
+        return self.find_element(LocatorsDzenPage.dzen_logo)
 
     @allure.step('Заполнение поля "Имя"')
     def input_name(self, name):
